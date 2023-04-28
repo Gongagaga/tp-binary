@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Changement de base
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 01 Exercice Partie 1 
 
-## Available Scripts
+Vous allez créer un script React permettant de réaliser une conversion de nombre décimal vers un nombre binaire. 
 
-In the project directory, you can run:
+Créez deux composants **App** et **BaseNumberInput**. Le composant App contiendra deux composants BaseNumberInput : respectivement pour saisir le nombre décimal et afficher le nombre binaire.
 
-### `npm start`
+```txt
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Nombre décimal : [ ... ]
+Nombre binaire : [ ... ]
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```
 
-### `npm test`
+Hiérarchie des composants :
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```txt
+                 App
+                .    .
+            .            .
+BaseNumberInput    BaseNumberInput
+```
 
-### `npm run build`
+Dans le composant BaseNumberInput l'attribut onChangeBase sera appelé dans le composant lui-même. La logique algorithmique du changement de base sera implémentée dans le composant parent App (méthode this.handleChange) :
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```js
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<BaseNumberInput onChangeBase={handleChange} />
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+// Dans le composant BaseNumberInput
+props.onChangeBase(e.target.value)
 
-### `npm run eject`
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Indication de code :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```js
+// Dans App on aura
+const handleChange = (number, base) => {
+   // ICI la logique de votre code
+}
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+/* ----------------------- */
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+// Dans BaseNumberInput
+const handleChange = e => {
+  props.onChangeBase( e, 1 );
+}
+// rendu du composant BaseNumberInput
+<input type="text" onChange={handleChange} />
+```
 
-## Learn More
+![Conversion binary <=> decimal](./images/decimal_binary.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 02 Exercice Partie 1 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Implémentez la logique dans l'autre sens : si on rentre un nombre binaire dans le champ correspondant alors la conversion se fait dans l'autre sens (binaire vers décimal).

@@ -28,6 +28,34 @@
   color: #61dafb;
 }
 
+div{
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+}
+body{
+  background-image: url(https://e0.pxfuel.com/wallpapers/508/418/desktop-wallpaper-marineford-one-piece-ace-anime-one-piece-anime.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.converter
+{
+  border: 3px solid red;
+  border-radius: 8px;
+  background:rgba(240, 128, 128, 0.6);
+  margin:2em;
+  box-shadow: 10px 5px 5px red;
+}
+
+.dsl {
+  color:white;
+}
+
+input{
+  margin-bottom:3em;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
